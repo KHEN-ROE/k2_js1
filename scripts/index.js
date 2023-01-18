@@ -64,6 +64,43 @@ const domRead = () =>{
     }
 }
 
+//click함수
+const clickBtn = (div0, bt0) =>{//함수를 따로 빼서 중복을 제거한다. 반복문으로 빼는 방법은?
+    bt0.addEventListener("click", ()=>{
+        div0.innerHTML=`<h1>${bt0.innerHTML}</h1>`;
+        console.log(bt0.innerHTML);
+    });
+}
+
+
+
+//DOM 요소 수정
+const domUpdate = () => {
+    const div1 = document.querySelector("#div1");//제목 바꾸기
+    // div1.innerHTML = "요소를 수정하고 있습니다...";
+
+    //함수 호출로 이벤트 달기
+    // const bt1 = document.querySelector("#bt1");
+    // const bt2 = document.querySelector("#bt2");
+    // const bt3 = document.querySelector("#bt3");
+
+    // clickBtn(div1, bt1);
+    // clickBtn(div1, bt2);
+    // clickBtn(div1, bt3);
+
+    //반복문으로 이벤트 달기
+    const btc = document.querySelectorAll(".btc");
+    console.log(btc)
+    for(let bt of btc) {
+        console.log(bt);
+       bt.addEventListener("click", ()=>{
+        div1.innerHTML = `<h1>${bt.innerHTML}</h1>`;
+        console.log(bt.innerHTML);
+       });
+    }
+   
+}
+
 //자바스크립트 랜더링 제어
 document.addEventListener("DOMContentLoaded", () => {//function이 없는 함수는 화살표로 대체 가능
     //DOM 요소 생성
@@ -71,7 +108,11 @@ document.addEventListener("DOMContentLoaded", () => {//function이 없는 함수
 
     //DOM 요소 접근
     domRead();
+
+    //DOM 요소 변경
+    domUpdate();
 }) ; 
+
 
 
 
